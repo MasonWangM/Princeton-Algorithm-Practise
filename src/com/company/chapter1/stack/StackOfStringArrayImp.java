@@ -26,6 +26,8 @@ public class StackOfStringArrayImp implements StackOfString {
     public String pop() {
         count--;
         if (count != 0) {
+            if (stackArray.length >5 && count == stackArray.length / 4)
+                resize(stackArray.length / 2);
             String lastItem = stackArray[count];
             stackArray[count] = null;
             return lastItem;
