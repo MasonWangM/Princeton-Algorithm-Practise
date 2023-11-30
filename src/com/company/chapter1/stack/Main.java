@@ -4,8 +4,8 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        StackOfString stackOfString = new StackOfStringLinkedImp();
-        List<String> operationList = List.of("A", "B", "-","KK", "C", "g", "vv", "-", "mm");
+        StackOfString stackOfString = new StackOfStringArrayImp();
+        List<String> operationList = List.of("A", "B", "-","KK", "C", "g", "vv", "-", "mm","x","y");
         System.out.println(stackOfString.size());
         System.out.println(stackOfString.isEmpty());
 

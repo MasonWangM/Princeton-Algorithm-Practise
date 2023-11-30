@@ -4,8 +4,8 @@ public class StackOfStringArrayImp implements StackOfString {
     private String[] stackArray;
     private int count = 0;
 
-    public StackOfStringArrayImp(int capacity) {
-        this.stackArray = new String[capacity];
+    public StackOfStringArrayImp() {
+        this.stackArray = new String[5];
     }
 
     @Override
@@ -15,23 +15,34 @@ public class StackOfStringArrayImp implements StackOfString {
 
     @Override
     public void push(String item) {
+        if (stackArray.length == count) {
+            resize(2 * stackArray.length);
+        }
         stackArray[count] = item;
         count++;
     }
 
     @Override
     public String pop() {
-        if (count != 0){
-            int index = count;
+        count--;
+        if (count != 0) {
+            String lastItem = stackArray[count];
             stackArray[count] = null;
-            count--;
-            return stackArray[index];
-        }else return null;
+            return lastItem;
+        } else return null;
     }
 
     @Override
     public int size() {
         return count;
+    }
+
+    private void resize(int capacity) {
+        String[] newArray = new String[capacity];
+        for (int i = 0; i < stackArray.length; i++) {
+            newArray[i] = stackArray[i];
+        }
+        stackArray = newArray;
     }
 
 }
