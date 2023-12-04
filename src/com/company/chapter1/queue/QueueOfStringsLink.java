@@ -1,8 +1,21 @@
 package com.company.chapter1.queue;
 
-public class QueueOfStringsLink implements Queue {
+import java.util.Iterator;
+
+public class QueueOfStringsLink implements Queue, Iterator<String> {
     private Node first;
     private Node last;
+
+    @Override
+    public boolean hasNext() {
+        return false;
+    }
+
+    @Override
+    public String next() {
+        return null;
+    }
+
     private class Node{
         String item;
         Node next;
