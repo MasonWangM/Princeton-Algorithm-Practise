@@ -26,5 +26,16 @@ public class Main {
         for (int i : arrayForShell) {
             System.out.println(i);
         }
+
+        int[] numberSorted = new int[9];
+        for (int i = 0; i < numberSorted.length; i++) {
+            numberSorted[i] = i + 1;
+        }
+        Shuffle.ShuffleRandomSort(numberSorted);
+        System.out.println("==============================");
+        for (int i : numberSorted) {
+            System.out.println(i);
+        }
+
     }
 }
