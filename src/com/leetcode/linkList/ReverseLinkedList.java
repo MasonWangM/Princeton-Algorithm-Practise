@@ -13,7 +13,7 @@ public class ReverseLinkedList {
         listNode4.next = listNode5;
 
 
-        ListNode current = reverseList(listNode1);
+        ListNode current = reverseListByRecursion(listNode1);
         while (current != null) {
             System.out.println(current.val);
             current = current.next;
@@ -35,18 +35,14 @@ public class ReverseLinkedList {
         return pre;
     }
 
-    static class ListNode {
-        int val;
-        ListNode next;
+    public static ListNode reverseListByRecursion(ListNode head) {
+       return reverseNode(null, head);
+    }
 
-        ListNode() { }
-
-        ListNode(int val) {
-            this.val = val; }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
+    private static ListNode reverseNode(ListNode pre, ListNode next) {
+        if (next == null) return pre;
+        ListNode temp = next.next;
+        next.next = pre;
+        return reverseNode(next, temp);
     }
 }
