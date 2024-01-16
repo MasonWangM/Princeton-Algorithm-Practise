@@ -39,5 +39,13 @@ public class HappyNumber {
         return numbers.stream().mapToInt(x -> x * x).sum();
     }
 
-
+    private static int betterCalculate(int number){
+        int result = 0;
+        while (number > 0){
+            int tempNum = number % 10;
+            result = result + tempNum * tempNum;
+            number = number / 10;
+        }
+        return result;
+    }
 }
