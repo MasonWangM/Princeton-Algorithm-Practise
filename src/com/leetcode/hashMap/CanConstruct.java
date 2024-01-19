@@ -14,8 +14,11 @@ public class CanConstruct {
         char[] charsForR = ransomNote.toCharArray();
         for (int i = 0; i < charsForR.length; i++) {
             magazineArray[charsForR[i] - 'a']--;
+            if (magazineArray[charsForR[i] - 'a'] < 0){
+                return false;
+            }
         }
 
-       return !Arrays.stream(magazineArray).anyMatch(num -> num < 0);
+       return true;
     }
 }
