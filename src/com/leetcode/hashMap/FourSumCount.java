@@ -6,26 +6,19 @@ public class FourSumCount {
     public int fourSumCount(int[] nums1, int[] nums2, int[] nums3, int[] nums4) {
         int length = nums1.length;
         HashMap<Integer, Integer> twoSumMap = new HashMap<>();
-        for (int i = 0; i < length ; i++) {
-            for (int j = 0; j < length; j++) {
-                int sum = nums1[i] + nums2[j];
-                if (twoSumMap.containsKey(sum)) {
-                    Integer count = twoSumMap.get(sum);
-                    twoSumMap.put(sum, count + 1);
-                }else {
-                    twoSumMap.put(sum, 1);
-                }
+        for (int numInOne : nums1) {
+            for (int numInTwo : nums2) {
+                int sum = numInOne + numInTwo;
+                twoSumMap.put(sum, twoSumMap.getOrDefault(sum, 0) + 1);
             }
         }
 
         int resultCount = 0;
-        for (int i = 0; i < length; i++) {
-            for (int l = 0; l < length; l++) {
-                int key = 0 - nums3[i] - nums4[l];
-                Integer count = twoSumMap.get(key);
-                if (count != null){
-                    resultCount += count;
-                }
+
+        for (int numInThree: nums3) {
+            for (int numInFour: nums4) {
+                int key = 0 - numInThree - numInFour;
+                resultCount += twoSumMap.getOrDefault(key, 0);
             }
         }
         return resultCount;
